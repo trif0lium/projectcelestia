@@ -1,5 +1,10 @@
-generator client {
-  provider = "prisma-client-js"
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+generator nestgraphql {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output = "../libs/graphql/src/lib"
 }
 
 model Character {
