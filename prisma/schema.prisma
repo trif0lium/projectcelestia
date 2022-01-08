@@ -1,0 +1,11 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Character {
+  name String
+  vision String
+  weapon String
+  affiliation String
+  rarity Int
+}
