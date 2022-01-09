@@ -1,0 +1,19 @@
+name: Nx Cloud
+on:
+  push:
+    branches:
+      - main
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - run: pnpm install
+      - run: pnpm nx affected --target=build --parallel --max-parallel=3
+      - run: pnpm nx affected --target=test --parallel --max-parallel=2
