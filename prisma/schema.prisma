@@ -70,3 +70,11 @@ enum CharacterSkillTalentType {
   ELEMENTAL_SKILL
   ELEMENTAL_BURST
 }
+
+model Artifact {
+  id             String @id @default(cuid())
+  name           String
+  maxRarity      Int
+  twoPieceBonus  String
+  fourPieceBonus String
+}
