@@ -28,5 +28,5 @@ jobs:
           version: latest
           run_install: false
       - run: pnpm install
-      - run: pnpm nx -- run-many --target=build --parallel --max-parallel=3 --all
-      - run: pnpm nx -- run-many --target=test --parallel --max-parallel=2 --all
+      - run: pnpm nx -- run-many --target=build --parallel --max-parallel=3 --all --with-deps
+      - run: pnpm nx -- run-many --target=test --parallel --max-parallel=2 --all --with-deps
