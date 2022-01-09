@@ -3,6 +3,12 @@
   "sourceRoot": "libs/graphql/src",
   "projectType": "library",
   "targets": {
+    "generate": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "pnpm prisma generate"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
