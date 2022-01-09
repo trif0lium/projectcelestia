@@ -4,7 +4,8 @@ on:
     branches:
       - main
 env:
-  NX_CLOUD_ACCESS_TOKEN: OTVkYTViNWQtYWI0OC00OGRlLTkwNmUtMzc5OTgzYmFiN2YyfHJlYWQ=
+  NX_CLOUD_ACCESS_TOKEN_READ: OTVkYTViNWQtYWI0OC00OGRlLTkwNmUtMzc5OTgzYmFiN2YyfHJlYWQ=
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 jobs:
   main:
     runs-on: ubuntu-latest
