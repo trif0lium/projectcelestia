@@ -27,7 +27,7 @@ jobs:
         with:
           version: latest
           run_install: false
-      - run: node tools/use-nx-cloud-task-runner.js
       - run: pnpm install
+      - run: node tools/use-nx-cloud-task-runner.js
       - run: pnpm nx -- affected --target=build --parallel --max-parallel=3 --all
       - run: pnpm nx -- affected --target=test --parallel --max-parallel=3 --all
