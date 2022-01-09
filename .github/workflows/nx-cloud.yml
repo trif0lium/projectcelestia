@@ -25,5 +25,5 @@ jobs:
           version: latest
           run_install: false
       - run: pnpm install
-      - run: pnpm nx -- affected --target=build --parallel --max-parallel=3
-      - run: pnpm nx -- affected --target=test --parallel --max-parallel=2
+      - run: pnpm nx -- affected:libs --target=build --parallel --max-parallel=3
+      - run: pnpm nx -- affected:libs --target=test --parallel --max-parallel=2
