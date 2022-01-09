@@ -22,3 +22,19 @@ model Character {
   affiliation String
   rarity      Int
 }
+
+model CharacterConstellation {
+  id          String @id @default(cuid())
+  name        String
+  unlock      String
+  description String
+  level       Int
+}
+
+model CharacterPassiveTalent {
+  id          String @id @default(cuid())
+  name        String
+  unlock      String
+  description String
+  level       Int
+}
