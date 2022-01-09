@@ -24,6 +24,7 @@ jobs:
         with:
           version: latest
           run_install: false
+      - run: npm install -g nx
       - run: pnpm install
       - run: pnpm affected --target=build --parallel --max-parallel=3
       - run: pnpm affected --target=test --parallel --max-parallel=2
