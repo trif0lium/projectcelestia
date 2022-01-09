@@ -17,6 +17,7 @@
     "@nrwl/nx-cloud": "^13.0.2",
     "@prisma/client": "^3.7.0",
     "apollo-server-express": "^3.6.1",
+    "fs-extra": "^10.0.0",
     "graphql": "^15",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
