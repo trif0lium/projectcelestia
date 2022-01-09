@@ -9,6 +9,17 @@
         "command": "pnpm prisma generate"
       }
     },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/graphql",
+        "tsConfig": "libs/graphql/tsconfig.lib.json",
+        "packageJson": "libs/graphql/package.json",
+        "main": "libs/graphql/src/index.ts",
+        "assets": ["libs/graphql/*.md"]
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
