@@ -1,0 +1,34 @@
+{
+  "root": "libs/characters",
+  "sourceRoot": "libs/characters/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/characters",
+        "tsConfig": "libs/characters/tsconfig.lib.json",
+        "packageJson": "libs/characters/package.json",
+        "main": "libs/characters/src/index.ts",
+        "assets": ["libs/characters/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/characters/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/characters"],
+      "options": {
+        "jestConfig": "libs/characters/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
