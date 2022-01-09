@@ -1,0 +1,34 @@
+{
+  "root": "libs/artifacts",
+  "sourceRoot": "libs/artifacts/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/artifacts",
+        "tsConfig": "libs/artifacts/tsconfig.lib.json",
+        "packageJson": "libs/artifacts/package.json",
+        "main": "libs/artifacts/src/index.ts",
+        "assets": ["libs/artifacts/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/artifacts/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/artifacts"],
+      "options": {
+        "jestConfig": "libs/artifacts/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

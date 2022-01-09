@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@projectcelestia/artifacts": ["libs/artifacts/src/index.ts"],
       "@projectcelestia/characters": ["libs/characters/src/index.ts"],
       "@projectcelestia/graphql": ["libs/graphql/src/index.ts"]
     }
