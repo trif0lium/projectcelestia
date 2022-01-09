@@ -15,26 +15,38 @@ generator nestgraphql {
 }
 
 model Character {
-  id          String @id @default(cuid())
-  name        String
-  vision      String
-  weapon      String
-  affiliation String
-  rarity      Int
+  id             String                   @id @default(cuid())
+  name           String
+  vision         String
+  weapon         String
+  affiliation    String
+  rarity         Int
+  constellations CharacterConstellation[]
+  passiveTalents CharacterPassiveTalent[]
 }
 
 model CharacterConstellation {
-  id          String @id @default(cuid())
+  id          String    @id @default(cuid())
+  characterId String
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
   name        String
   unlock      String
   description String
   level       Int
+
+  @@index([characterId])
 }
 
 model CharacterPassiveTalent {
-  id          String @id @default(cuid())
+  id          String    @id @default(cuid())
+  characterId String
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
   name        String
   unlock      String
   description String
   level       Int
+
+  @@index([characterId])
 }
