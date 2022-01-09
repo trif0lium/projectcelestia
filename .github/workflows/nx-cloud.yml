@@ -23,6 +23,7 @@ jobs:
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: latest
-          run_install: true
+          run_install: false
+      - run: pnpm install
       - run: pnpm nx affected --target=build --parallel --max-parallel=3
       - run: pnpm nx affected --target=test --parallel --max-parallel=2
