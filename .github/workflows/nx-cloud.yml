@@ -29,4 +29,5 @@ jobs:
           run_install: false
       - run: pnpm install
       - run: pnpm nx -- affected --target=build --parallel --max-parallel=3 --all
-      - run: pnpm nx -- affected --target=test --parallel --max-parallel=2 --all
+      - run: pnpm nx -- affected --target=test --parallel --max-parallel=3 --all
+      - run: pnpm nx -- affected --target=lint --parallel --max-parallel=3 --all
