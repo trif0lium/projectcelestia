@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { CharacterCreateNestedOneWithoutPassiveTalentsInput } from '../character/character-create-nested-one-without-passive-talents.input';
 
 @InputType()
 export class CharacterPassiveTalentCreateInput {
@@ -19,4 +20,7 @@ export class CharacterPassiveTalentCreateInput {
 
     @Field(() => Int, {nullable:false})
     level!: number;
+
+    @Field(() => CharacterCreateNestedOneWithoutPassiveTalentsInput, {nullable:false})
+    character!: CharacterCreateNestedOneWithoutPassiveTalentsInput;
 }

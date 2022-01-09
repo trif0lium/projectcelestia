@@ -8,6 +8,9 @@ export class CharacterPassiveTalentMinAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
+    characterId?: true;
+
+    @Field(() => Boolean, {nullable:true})
     name?: true;
 
     @Field(() => Boolean, {nullable:true})

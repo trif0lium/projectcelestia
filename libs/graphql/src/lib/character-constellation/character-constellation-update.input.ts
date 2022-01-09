@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
+import { CharacterUpdateOneRequiredWithoutConstellationsInput } from '../character/character-update-one-required-without-constellations.input';
 
 @InputType()
 export class CharacterConstellationUpdateInput {
@@ -20,4 +21,7 @@ export class CharacterConstellationUpdateInput {
 
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     level?: IntFieldUpdateOperationsInput;
+
+    @Field(() => CharacterUpdateOneRequiredWithoutConstellationsInput, {nullable:true})
+    character?: CharacterUpdateOneRequiredWithoutConstellationsInput;
 }

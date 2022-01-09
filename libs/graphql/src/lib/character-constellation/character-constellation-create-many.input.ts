@@ -9,6 +9,9 @@ export class CharacterConstellationCreateManyInput {
     id?: string;
 
     @Field(() => String, {nullable:false})
+    characterId!: string;
+
+    @Field(() => String, {nullable:false})
     name!: string;
 
     @Field(() => String, {nullable:false})

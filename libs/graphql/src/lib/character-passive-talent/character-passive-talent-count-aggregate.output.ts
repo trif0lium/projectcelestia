@@ -9,6 +9,9 @@ export class CharacterPassiveTalentCountAggregate {
     id!: number;
 
     @Field(() => Int, {nullable:false})
+    characterId!: number;
+
+    @Field(() => Int, {nullable:false})
     name!: number;
 
     @Field(() => Int, {nullable:false})

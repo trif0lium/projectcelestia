@@ -8,6 +8,9 @@ export class CharacterPassiveTalentMaxAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
+    characterId?: true;
+
+    @Field(() => Boolean, {nullable:true})
     name?: true;
 
     @Field(() => Boolean, {nullable:true})

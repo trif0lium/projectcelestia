@@ -9,6 +9,9 @@ export class CharacterConstellationMinAggregate {
     id?: string;
 
     @Field(() => String, {nullable:true})
+    characterId?: string;
+
+    @Field(() => String, {nullable:true})
     name?: string;
 
     @Field(() => String, {nullable:true})

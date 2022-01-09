@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { CharacterCreateNestedOneWithoutConstellationsInput } from '../character/character-create-nested-one-without-constellations.input';
 
 @InputType()
 export class CharacterConstellationCreateInput {
@@ -19,4 +20,7 @@ export class CharacterConstellationCreateInput {
 
     @Field(() => Int, {nullable:false})
     level!: number;
+
+    @Field(() => CharacterCreateNestedOneWithoutConstellationsInput, {nullable:false})
+    character!: CharacterCreateNestedOneWithoutConstellationsInput;
 }

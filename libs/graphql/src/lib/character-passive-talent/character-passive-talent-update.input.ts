@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
+import { CharacterUpdateOneRequiredWithoutPassiveTalentsInput } from '../character/character-update-one-required-without-passive-talents.input';
 
 @InputType()
 export class CharacterPassiveTalentUpdateInput {
@@ -20,4 +21,7 @@ export class CharacterPassiveTalentUpdateInput {
 
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     level?: IntFieldUpdateOperationsInput;
+
+    @Field(() => CharacterUpdateOneRequiredWithoutPassiveTalentsInput, {nullable:true})
+    character?: CharacterUpdateOneRequiredWithoutPassiveTalentsInput;
 }
