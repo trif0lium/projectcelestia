@@ -23,6 +23,7 @@ model Character {
   rarity         Int
   constellations CharacterConstellation[]
   passiveTalents CharacterPassiveTalent[]
+  skillTalents   CharacterSkillTalent[]
 }
 
 model CharacterConstellation {
