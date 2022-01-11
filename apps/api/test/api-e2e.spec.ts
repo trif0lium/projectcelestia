@@ -1,3 +1,4 @@
+import * as request from 'supertest'
 import { Test } from '@nestjs/testing'
 import { INestApplication } from '@nestjs/common'
 import { AppModule } from '../src/app/app.module'
@@ -32,5 +33,16 @@ describe('@projectcelestia/api', () => {
 
     app = moduleRef.createNestApplication()
     await app.init()
+  })
+
+  describe('GET /api', () => {
+    it(`should return "Welcome to api!"`, () => {
+      return request(app.getHttpServer()).get('/api').expect(200).expect({ message: 'Welcome to api!' })
+    })
+  })
+
+  afterAll(async () => {
+    await app.close()
+    await mySQLContainer.stop()
   })
 })
