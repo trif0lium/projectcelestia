@@ -7,6 +7,8 @@ import { execFile } from 'child_process'
 import path = require('path')
 
 describe('@projectcelestia/api', () => {
+  jest.setTimeout(240_000)
+
   let app: INestApplication
   let mySQLContainer: StartedMySqlContainer
 
