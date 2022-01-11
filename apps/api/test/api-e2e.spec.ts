@@ -15,19 +15,19 @@ describe('@projectcelestia/api', () => {
   beforeAll(async () => {
     mySQLContainer = await new MySqlContainer().start()
 
-    await new Promise((resolve, reject) => {
-      execFile(path.resolve('../../../../node_modules/prisma/build/index.js'), ['migrate', 'deploy'], {
-        env: {
-          'DATABASE_URL': `mysql://${mySQLContainer.getUsername()}:${mySQLContainer.getUserPassword()}@${mySQLContainer.getHost()}:${mySQLContainer.getPort()}/projectcelestia`
-        }
-      }, (error) => {
-        if (error != null) {
-          reject(error.code ?? 1)
-        } else {
-          resolve(0)
-        }
-      })
-    })
+    // await new Promise((resolve, reject) => {
+    //   execFile(path.resolve('../../../../node_modules/prisma/build/index.js'), ['migrate', 'deploy'], {
+    //     env: {
+    //       'DATABASE_URL': `mysql://${mySQLContainer.getUsername()}:${mySQLContainer.getUserPassword()}@${mySQLContainer.getHost()}:${mySQLContainer.getPort()}/projectcelestia`
+    //     }
+    //   }, (error) => {
+    //     if (error != null) {
+    //       reject(error.code ?? 1)
+    //     } else {
+    //       resolve(0)
+    //     }
+    //   })
+    // })
 
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule]
