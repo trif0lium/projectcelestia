@@ -20,6 +20,7 @@ specifiers:
   '@prisma/client': ^3.7.0
   '@types/jest': 27.0.2
   '@types/node': 14.14.33
+  '@types/supertest': ^2.0.11
   '@typescript-eslint/eslint-plugin': ~5.3.0
   '@typescript-eslint/parser': ~5.3.0
   apollo-server-express: ^3.6.1
@@ -67,6 +68,7 @@ devDependencies:
   '@nrwl/workspace': 13.4.3_prettier@2.5.1+typescript@4.4.4
   '@types/jest': 27.0.2
   '@types/node': 14.14.33
+  '@types/supertest': 2.0.11
   '@typescript-eslint/eslint-plugin': 5.3.1_4653b7803b7453f5f37717b7e1448517
   '@typescript-eslint/parser': 5.3.1_eslint@8.2.0+typescript@4.4.4
   eslint: 8.2.0
@@ -1567,6 +1569,10 @@ packages:
       '@types/node': 14.14.33
     dev: false
 
+  /@types/cookiejar/2.1.2:
+    resolution: {integrity: sha512-t73xJJrvdTjXrn4jLS9VSGRbz0nUY3cl2DMGDU48lKl+HR9dbbjW2A9r3g40VA++mQpy6uuHg33gy7du2BKpog==}
+    dev: true
+
   /@types/cors/2.8.12:
     resolution: {integrity: sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==}
     dev: false
@@ -1741,6 +1747,19 @@ packages:
 
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
+    dev: true
+
+  /@types/superagent/4.1.14:
+    resolution: {integrity: sha512-iiXaOL2wSbnSY4qg0mFPWJHL9iwyEsoNYwaHF2w58/fsVAQJlj+KUfFAFZu+nzbz+b7dUprJEAc+O9vhHHhQTA==}
+    dependencies:
+      '@types/cookiejar': 2.1.2
+      '@types/node': 14.14.33
+    dev: true
+
+  /@types/supertest/2.0.11:
+    resolution: {integrity: sha512-uci4Esokrw9qGb9bvhhSVEjd6rkny/dk5PK/Qz4yxKiyppEI+dOPlNrZBahE3i+PoKFYyDxChVXZ/ysS/nrm1Q==}
+    dependencies:
+      '@types/superagent': 4.1.14
     dev: true
 
   /@types/webpack-sources/0.1.9:
