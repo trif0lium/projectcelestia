@@ -35,7 +35,7 @@ jobs:
       - run: node tools/use-nx-cloud-tasks-runner.js
       - run: pnpm nx -- affected --target=build --parallel --max-parallel=3 --all
       - run: pnpm nx -- affected --target=test --parallel --max-parallel=3 --all
-      - run: pnpm dlx nx-cloud stop-all-agents
+      - run: pnpx nx-cloud stop-all-agents
   agent:
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -60,4 +60,4 @@ jobs:
         with:
           version: latest
           run_install: false
-      - run: pnpm dlx nx-cloud start-agent
+      - run: pnpx nx-cloud start-agent
