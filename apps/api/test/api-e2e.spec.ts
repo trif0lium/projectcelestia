@@ -29,6 +29,8 @@ describe('@projectcelestia/api', () => {
     //   })
     // })
 
+    process.env.DATABASE_URL = `mysql://${mySQLContainer.getUsername()}:${mySQLContainer.getUserPassword()}@${mySQLContainer.getHost()}:${mySQLContainer.getPort()}/projectcelestia`
+
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule]
     }).compile()
