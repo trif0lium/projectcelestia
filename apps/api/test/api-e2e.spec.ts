@@ -39,9 +39,9 @@ describe('@projectcelestia/api', () => {
     await app.init()
   })
 
-  describe('GET /api', () => {
+  describe('GET /', () => {
     it(`should return "Welcome to api!"`, () => {
-      return request(app.getHttpServer()).get('/api').expect(200).expect({ message: 'Welcome to api!' })
+      return request(app.getHttpServer()).get('/').expect(200).expect({ message: 'Welcome to api!' })
     })
   })
 
