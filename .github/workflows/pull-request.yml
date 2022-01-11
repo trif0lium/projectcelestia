@@ -6,6 +6,9 @@ on:
 env:
   NX_CLOUD_ACCESS_TOKEN_READ: OTVkYTViNWQtYWI0OC00OGRlLTkwNmUtMzc5OTgzYmFiN2YyfHJlYWQ=
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX_CLOUD_DISTRIBUTED_EXECUTION: 'true'
+  NODE_OPTIONS: '--max_old_space_size=4096'
+
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -29,5 +32,34 @@ jobs:
           run_install: false
       - run: pnpm install
       - run: node tools/use-nx-cloud-tasks-runner.js
-      - run: pnpm nx -- affected --target=build --parallel --max-parallel=3
-      - run: pnpm nx -- affected --target=test --parallel --max-parallel=3
+      - run: pnpm nx-cloud start-ci-run
+      - run: pnpm nx -- affected --target=build --parallel --max-parallel=3 --all
+      - run: pnpm nx -- affected --target=test --parallel --max-parallel=3 --all
+      - run: pnpm nx-cloud stop-all-agents
+  agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        agent: [1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: latest
+          run_install: false
+      - run: pnpm install
+      - run: node tools/use-nx-cloud-tasks-runner.js
+      - run: pnpm nx-cloud start-agent
