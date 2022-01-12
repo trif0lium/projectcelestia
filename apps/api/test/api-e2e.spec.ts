@@ -24,6 +24,7 @@ describe('@projectcelestia/api', () => {
         }
       }, (error) => {
         if (error != null) {
+          console.log(error.message)
           reject(error.code ?? 1)
         } else {
           resolve(0)
