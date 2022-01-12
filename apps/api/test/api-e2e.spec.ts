@@ -16,11 +16,16 @@ describe('@projectcelestia/api', () => {
     mySqlContainer = await new MySqlContainer().start()
     databaseUrl = `mysql://${mySqlContainer.getUsername()}:${mySqlContainer.getUserPassword()}@${mySqlContainer.getHost()}:${mySqlContainer.getPort()}/${mySqlContainer.getDatabase()}`
 
-    await execa('pnpm prisma', ['migrate', 'deploy'], {
-      env: {
+    try {
+      await execa('pnpm prisma', ['migrate', 'deploy'], {
+        env: {
           'DATABASE_URL': databaseUrl
-      }
-    })
+        }
+      })
+    } catch(error) {
+      console.log(error)
+      throw new Error(error)
+    }
 
     process.env.DATABASE_URL = databaseUrl
 
