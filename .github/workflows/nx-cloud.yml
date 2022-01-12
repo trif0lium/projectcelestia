@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - main
-      - ci/dte
+      - feat/prisma-testcontainers
 env:
   NX_CLOUD_ACCESS_TOKEN_READ: OTVkYTViNWQtYWI0OC00OGRlLTkwNmUtMzc5OTgzYmFiN2YyfHJlYWQ=
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_CLOUD_DISTRIBUTED_EXECUTION: 'true'
+  NX_CLOUD_DISTRIBUTED_EXECUTION: 'false'
   NODE_OPTIONS: '--max_old_space_size=4096'
 
 jobs:
