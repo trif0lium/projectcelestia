@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing'
 import { INestApplication } from '@nestjs/common'
 import { AppModule } from '../src/app/app.module'
 import { StartedMySqlContainer, MySqlContainer } from 'testcontainers'
-import { execa } from 'execa'
+const execa = require('execa')
 
 describe('@projectcelestia/api', () => {
   jest.setTimeout(240_000)
