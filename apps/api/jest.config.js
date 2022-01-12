@@ -1,11 +1,9 @@
 module.exports = {
   displayName: 'api',
   preset: '../../jest.preset.js',
-  extensionsToTreatAsEsm: ['.ts'],
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
-      useESM: true
     },
   },
   testEnvironment: 'node',
