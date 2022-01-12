@@ -3,8 +3,7 @@ import { Test } from '@nestjs/testing'
 import { INestApplication } from '@nestjs/common'
 import { AppModule } from '../src/app/app.module'
 import { StartedMySqlContainer, MySqlContainer } from 'testcontainers'
-import { execFile } from 'child_process'
-import path = require('path')
+import { execa } from 'execa'
 
 describe('@projectcelestia/api', () => {
   jest.setTimeout(240_000)
@@ -17,19 +16,10 @@ describe('@projectcelestia/api', () => {
     mySqlContainer = await new MySqlContainer().start()
     databaseUrl = `mysql://${mySqlContainer.getUsername()}:${mySqlContainer.getUserPassword()}@${mySqlContainer.getHost()}:${mySqlContainer.getPort()}/${mySqlContainer.getDatabase()}`
 
-    await new Promise((resolve, reject) => {
-      execFile(path.resolve('./node_modules/prisma/build/index.js'), ['migrate', 'deploy'], {
-        env: {
+    await execa('pnpm prisma', ['migrate', 'deploy'], {
+      env: {
           'DATABASE_URL': databaseUrl
-        }
-      }, (error) => {
-        if (error != null) {
-          console.log(error.message)
-          reject(error.code ?? 1)
-        } else {
-          resolve(0)
-        }
-      })
+      }
     })
 
     process.env.DATABASE_URL = databaseUrl
