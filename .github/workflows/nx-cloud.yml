@@ -32,6 +32,8 @@ jobs:
           version: latest
           run_install: false
       - run: pnpm install
+      - run: ls -a node_modules/prisma/build/
+      - run: cat node_modules/prisma/build/index.js
       - run: node tools/use-nx-cloud-tasks-runner.js
       - run: pnpm nx-cloud start-ci-run
       - run: pnpm nx -- affected --target=build --parallel --max-parallel=3 --all
