@@ -10,7 +10,6 @@ import { GraphQLModule } from '@nestjs/graphql'
   imports: [
     PrismaModule,
     ArtifactsModule,
-    GraphQLModule.forRoot({})
   ],
   controllers: [AppController],
   providers: [AppService],
