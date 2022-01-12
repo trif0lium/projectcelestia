@@ -18,7 +18,7 @@ describe('@projectcelestia/api', () => {
     databaseUrl = `mysql://${mySqlContainer.getUsername()}:${mySqlContainer.getUserPassword()}@${mySqlContainer.getHost()}:${mySqlContainer.getPort()}/${mySqlContainer.getDatabase()}`
 
     await new Promise((resolve, reject) => {
-      execFile(path.resolve(__dirname, '../../../node_modules/prisma/build/index.js'), ['migrate', 'deploy'], {
+      execFile(path.resolve('./node_modules/prisma/build/index.js'), ['migrate', 'deploy'], {
         env: {
           'DATABASE_URL': databaseUrl
         }
