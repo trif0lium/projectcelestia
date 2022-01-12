@@ -3,33 +3,31 @@ import { Test } from '@nestjs/testing'
 import { INestApplication } from '@nestjs/common'
 import { AppModule } from '../src/app/app.module'
 import { StartedMySqlContainer, MySqlContainer } from 'testcontainers'
-import { execFile } from 'child_process'
-import path = require('path')
+import * as execa from 'execa'
 
 describe('@projectcelestia/api', () => {
   jest.setTimeout(240_000)
 
   let app: INestApplication
-  let mySQLContainer: StartedMySqlContainer
+  let mySqlContainer: StartedMySqlContainer
+  let databaseUrl: string
 
   beforeAll(async () => {
-    mySQLContainer = await new MySqlContainer().start()
+    mySqlContainer = await new MySqlContainer().start()
+    databaseUrl = `mysql://${mySqlContainer.getUsername()}:${mySqlContainer.getUserPassword()}@${mySqlContainer.getHost()}:${mySqlContainer.getPort()}/${mySqlContainer.getDatabase()}`
 
-    // await new Promise((resolve, reject) => {
-    //   execFile(path.resolve('../../../../node_modules/prisma/build/index.js'), ['migrate', 'deploy'], {
-    //     env: {
-    //       'DATABASE_URL': `mysql://${mySQLContainer.getUsername()}:${mySQLContainer.getUserPassword()}@${mySQLContainer.getHost()}:${mySQLContainer.getPort()}/projectcelestia`
-    //     }
-    //   }, (error) => {
-    //     if (error != null) {
-    //       reject(error.code ?? 1)
-    //     } else {
-    //       resolve(0)
-    //     }
-    //   })
-    // })
+    try {
+      await execa('pnpm', ['prisma', 'migrate', 'deploy'], {
+        env: {
+          'DATABASE_URL': databaseUrl
+        }
+      })
+    } catch(error) {
+      console.log(error)
+      throw new Error(error)
+    }
 
-    process.env.DATABASE_URL = `mysql://${mySQLContainer.getUsername()}:${mySQLContainer.getUserPassword()}@${mySQLContainer.getHost()}:${mySQLContainer.getPort()}/${mySQLContainer.getDatabase()}`
+    process.env.DATABASE_URL = databaseUrl
 
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule]
@@ -47,6 +45,6 @@ describe('@projectcelestia/api', () => {
 
   afterAll(async () => {
     await app.close()
-    await mySQLContainer.stop()
+    await mySqlContainer.stop()
   })
 })
