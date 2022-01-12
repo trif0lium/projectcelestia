@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - projectcelestia
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: projectcelestia
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - '3306:3306'
+networks:
+  projectcelestia:
+    name: projectcelestia
